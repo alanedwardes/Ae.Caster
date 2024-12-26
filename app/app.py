@@ -36,7 +36,6 @@ def device(device_uuid_string):
     
     chromecast.wait()
     media = chromecast.media_controller
-    media.update_status()
 
     config = load_config()    
     castable_media = config.get('castable_media', {})
