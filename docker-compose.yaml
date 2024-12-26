@@ -1,0 +1,8 @@
+services:
+  caster: 
+    build: ./
+    stop_signal: SIGINT
+    container_name: caster
+    ports:
+      - 8000:8000
+    restart: unless-stopped
