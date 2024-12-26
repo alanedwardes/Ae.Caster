@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block title %}Device List{% endblock %}
 {% block content %}
-  <h1>Chromecasts</h1>
-  <ul>
+<h1>Chromecasts</h1>
+<ul>
   {% for device in devices %}
-    <li><a href="/devices/{{ device.uuid }}">{{ device.friendly_name }} ({{ device.model_name }})</a></li>
+  <li><a href="/devices/{{ device.uuid }}">{{ device.friendly_name }} ({{ device.model_name }})</a></li>
   {% endfor %}
-  </ul>
+</ul>
 {% endblock %}

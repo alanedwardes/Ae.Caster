@@ -1,40 +1,47 @@
 {% extends "base.html" %}
 {% block title %}{{ device.friendly_name }}{% endblock %}
 {% block content %}
-    <h1>{{ device.friendly_name }}</h1>
-    <p><a href="/">Devices</a></p>
-    <p><b>State</b> {{ media_status.player_state }}</p>
-    <p><b>Time</b> <progress id="file" max="{{ media_status.duration }}" value="{{ media_status.current_time }}">70%</progress></p>
+<h1>{{ device.friendly_name }}</h1>
+<p><a href="/">Devices</a></p>
+<p><b>State</b> {{ media_status.player_state }}</p>
+<p><b>Time</b> <progress id="file" max="{{ media_status.duration }}"
+        value="{{ media_status.current_time }}">70%</progress></p>
 
-    <p>
-        <b>Media Control</b>
-        <form action="" method="post"><input type="hidden" name="action" value="play"><button>Play</button></form>
-        <form action="" method="post"><input type="hidden" name="action" value="pause"><button>Pause</button></form>
-        <form action="" method="post"><input type="hidden" name="action" value="rewind30s"><button>Rewind 30s</button></form>
-    </p>
+<p>
+    <b>Media Control</b>
+<form action="" method="post"><input type="hidden" name="action" value="play"><button>Play</button></form>
+<form action="" method="post"><input type="hidden" name="action" value="pause"><button>Pause</button></form>
+<form action="" method="post"><input type="hidden" name="action" value="rewind30s"><button>Rewind 30s</button></form>
+</p>
 
-    <h2>Cast Media</h2>
-    <p>
-        <form action="" method="post">
-            <select name="media">
-                {% for key, value in castable_media.items() %}
-                    <option value="{{ value }}">{{ key }}</option>
-                {% endfor %}
-            </select>
-            <input type="hidden" name="action" value="cast">
-            <button>Cast</button>
-        </form>
-    </p>
+<h2>Cast Media</h2>
+<p>
+<form action="" method="post">
+    <select name="media">
+        {% for key, value in castable_media.items() %}
+        <option value="{{ value }}">{{ key }}</option>
+        {% endfor %}
+    </select>
+    <input type="hidden" name="action" value="cast">
+    <button>Cast</button>
+</form>
+</p>
 
-    <h2>Information</h2>
-    <table>
-        {% for key, value in media_status.items() %}
+<details>
+    <summary>Advanced</summary>
+    <div>
+        <table>
+            {% for key, value in media_status.items() %}
             <tr>
                 <th>{{ key }}</th>
                 <td>{{ value }}</td>
             </tr>
-        {% endfor %}
-    </table>
-
-    <p>Management: <form action="" method="post"><input type="hidden" name="action" value="quit"><button>Quit Application</button></form></p>
+            {% endfor %}
+        </table>
+    </div>
+    <p>Management:
+    <form action="" method="post"><input type="hidden" name="action" value="quit"><button>Quit Application</button>
+    </form>
+    </p>
+</details>
 {% endblock %}
