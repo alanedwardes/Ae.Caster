@@ -54,3 +54,6 @@ def device(device_uuid_string):
         media.play_media(request.form['media'], 'video/mp4')
 
     return render_template('device.html', media_status=vars(media.status), device=cast_info, castable_media=castable_media)
+
+if __name__ == '__main__':
+	app.run(host='0.0.0.0', port=8000)
