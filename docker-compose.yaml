@@ -4,4 +4,6 @@ services:
     stop_signal: SIGINT
     container_name: caster
     network_mode: host
+    volumes:
+      - ./config.json:/app/config.json:ro
     restart: unless-stopped
